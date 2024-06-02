@@ -60,7 +60,7 @@ main {
     max-width: 800px;
     margin: auto;
     background: #ecf0f1;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px rgba(0,0,0,0);
 }
 
 section {
@@ -97,7 +97,7 @@ ul li {
 
 footer {
     background: #2c3e50;
-    color: #ecf0f1;
+    color: #eaf0f1;
     text-align: center;
     padding: 1rem 0;
 }

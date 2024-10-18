@@ -11,3 +11,20 @@ h1{
     gap: 20px;
     justify-content: center;
 }
+
+.visualize{
+    margin: 1px auto;
+    box-shadow: #000000 0px 1px 4px;
+    height: 420px;
+    width: 1000px;
+    max-height: 731px;
+}
+
+.array{
+    display: flex;
+    align-items: flex-start;
+    min-height: 100%;
+    height: 100%;
+    padding: 1rem;
+    flex-direction: row;
+}

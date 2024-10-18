@@ -7,19 +7,19 @@
     <title> Sorting Visualizer </title>
 </head>
 <body>
-    <div>
+    <div class = "heading">
         <h1> Sorting Visualizer </h1>
     </div>
     <div class = "container">
         <div>
-            <select name = "Type of sorting" id = "sorting" class = "algo-dropbox">
+            <select name = "Type of sorting" id = "drop-box" class = "algo-dropbox">
                 <option value = "0"> Select type of sorting </option>
                 <option value = "1"> Bubble sort </option>
                 <option value = "2"> Insertion sort </option>
             </select>
         </div>
         <div>
-            <select name = "array size" id = "size" class = "size-dropbox">
+            <select name = "array size" id = "drop-box" class = "size-dropbox">
                 <option value = "0"> select array size </option>
                 <option value = "1"> 5 </option>
                 <option value = "2"> 10 </option>
@@ -29,7 +29,7 @@
             </select>
         </div>
         <div>
-            <select name = "speed of sorting" id = "speed" class = "speed-dropbox">
+            <select name = "speed of sorting" id = "drop-box" class = "speed-dropbox">
                 <option value = "0"> select speed </option>
                 <option value = "1"> 0.5x </option>
                 <option value = "2"> 1x </option>
@@ -37,10 +37,14 @@
                 <option value = "4"> 5x </option>
             </select>
         </div>
+        <div>
+            <button> Sort </button>
+        </div>
     </div>
     
     <div class = "visualize">
         <div class = "array"></div>
     </div>
+    <script src = "js/scripts.js"></script>
 </body>
 </html>

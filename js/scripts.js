@@ -73,6 +73,46 @@ async function insertionSort(){
     }
 }
 
+//Merge Sort
+async function mergeSort(start, end) {
+    if (start >= end) return;
+
+    const mid = Math.floor((start + end) / 2);
+    await mergeSort(start, mid);
+    await mergeSort(mid + 1, end);
+    await merge(start, mid, end);
+}
+
+async function merge(start, mid, end) {
+    const bars = document.querySelectorAll('.array-bar');
+    let left = start, right = mid + 1;
+    const tempArray = [];
+
+    while (left <= mid && right <= end) {
+        bars[left].style.backgroundColor = '#A4193D'; // Left half color
+        bars[right].style.backgroundColor = '#FFDFB9'; // Right half color
+
+        if (parseInt(bars[left].style.height) < parseInt(bars[right].style.height)) {
+            tempArray.push(bars[left].style.height);
+            left++;
+        } else {
+            tempArray.push(bars[right].style.height);
+            right++;
+        }
+        await sleep(speedInput.value);
+    }
+
+    while (left <= mid) tempArray.push(bars[left++].style.height);
+    while (right <= end) tempArray.push(bars[right++].style.height);
+
+    for (let i = 0; i < tempArray.length; i++) {
+        bars[start + i].style.height = tempArray[i];
+        bars[start + i].style.backgroundColor = '#333333';
+        await sleep(speedInput.value);
+    }
+}
+
+
 // Quick Sort
 async function quickSort(start, end){
     if (start >= end) return;
@@ -120,7 +160,10 @@ async function handleSort(){
         case '3':
             await quickSort(0, array.length - 1);
             break;
-    }
+        case '4':
+            await mergeSort(0, array.length -1);
+            break;
+        }
     sorting = false;
 }
 

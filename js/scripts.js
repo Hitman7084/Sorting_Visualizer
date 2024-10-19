@@ -40,8 +40,8 @@ async function bubbleSort(){
     const bars = document.querySelectorAll('.array-bar');
     for (let i = 0; i < bars.length - 1; i++){
         for (let j = 0; j < bars.length - i - 1; j++){
-            bars[j].style.backgroundColor = '#A9A29C';
-            bars[j + 1].style.backgroundColor = '#A9A29C';
+            bars[j].style.backgroundColor = '#403D39';
+            bars[j + 1].style.backgroundColor = '#403D39';
 
             if (parseInt(bars[j].style.height) > parseInt(bars[j + 1].style.height)){
                 await sleep(speedInput.value);
@@ -61,7 +61,7 @@ async function insertionSort(){
     for (let i = 1; i < bars.length; i++){
         let j = i - 1;
         let key = bars[i].style.height;
-        bars[i].style.backgroundColor = '#A9A29C';
+        bars[i].style.backgroundColor = '#403D39';
         
         while (j >= 0 && parseInt(bars[j].style.height) > parseInt(key)){
             bars[j + 1].style.height = bars[j].style.height;
@@ -86,10 +86,10 @@ async function quickSort(start, end){
 async function partition(bars, start, end){
     let pivot = parseInt(bars[end].style.height);
     let i = start - 1;
-    bars[end].style.backgroundColor = '#A9A29C';
+    bars[end].style.backgroundColor = '#403D39';
 
     for (let j = start; j < end; j++){
-        bars[j].style.backgroundColor = 'yellow';
+        bars[j].style.backgroundColor = '#720026';
         if (parseInt(bars[j].style.height) < pivot) {
             i++;
             swap(bars[i], bars[j]);

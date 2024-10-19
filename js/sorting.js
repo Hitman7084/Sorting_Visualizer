@@ -12,7 +12,7 @@ class sortingAlgorithms{
                 await this.help.mark(j);
                 await this.help.mark(j+1);
                 if(await this.help.compare(j, j+1)){
-                    await.this.help.swap(j, j+1);
+                    await this.help.swap(j, j+1);
                 }
                 await this.help.unmark(j);
                 await this.help.unmark(j+1);

@@ -3,7 +3,7 @@ class sortingAlgorithms{
         this.list = document.querySelectorAll(".cell")
         this.size = this.list.length;
         this.time = time;
-        this.help = new Helper(this.time, this.list);
+        this.help = new Marker(this.time, this.list);
     }
 
     BubbleSort = async() => {

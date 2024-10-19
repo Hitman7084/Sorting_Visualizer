@@ -14,6 +14,10 @@ body{
     height: 100vh;
 }
 
+h1{
+    font-family: cursive;
+}
+
 select, option{
     background-color: #28262B;
     color: #D5CCC7;

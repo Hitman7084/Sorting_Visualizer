@@ -77,3 +77,23 @@ body{
     color: white;
     transition: all 0.4s ease-out;
 }
+
+@media screen and (max-width: 600px){
+    .container{
+        gap: 0.4 em;
+    }
+
+    a#random{
+        order: 4;
+    }
+
+    a.start{
+        order: 5;
+    }
+}
+
+@media screen and (max-width: 550px){
+    .visualize{
+        width: 95%;
+    }
+}

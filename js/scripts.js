@@ -1,21 +1,19 @@
 const arrayContainer = document.getElementById('array-container');
 const generateBtn = document.getElementById('generate');
 const sortBtn = document.getElementById('sort');
-const algorithmSelect = document.getElementById('algorithm');
+const algorithmSelect = document.getElementById('algo');
 const speedInput = document.getElementById('speed');
 const sizeInput = document.getElementById('size');
 
 let array = [];
 let sorting = false;
 
-// Generate a new array based on size
 function generateArray() {
   const size = sizeInput.value;
   array = Array.from({ length: size }, () => Math.floor(Math.random() * 300) + 5);
   renderArray();
 }
 
-// Render the array bars
 function renderArray() {
   arrayContainer.innerHTML = '';
   array.forEach(value => {
@@ -27,14 +25,12 @@ function renderArray() {
   });
 }
 
-// Swap two elements in the DOM
 function swap(el1, el2) {
   const temp = el1.style.height;
   el1.style.height = el2.style.height;
   el2.style.height = temp;
 }
 
-// Sleep function to control sorting speed
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -107,28 +103,25 @@ async function partition(bars, start, end) {
   return i + 1;
 }
 
-// Handle sorting based on selected algorithm
 async function handleSort() {
   if (sorting) return;
   sorting = true;
   const algorithm = algorithmSelect.value;
   switch (algorithm) {
-    case 'bubble':
+    case '1':
       await bubbleSort();
       break;
-    case 'insertion':
+    case '2':
       await insertionSort();
       break;
-    case 'quick':
+    case '3':
       await quickSort(0, array.length - 1);
       break;
   }
   sorting = false;
 }
 
-// Event listeners
 generateBtn.addEventListener('click', generateArray);
 sortBtn.addEventListener('click', handleSort);
 
-// Initial array generation
 generateArray();

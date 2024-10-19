@@ -88,3 +88,4 @@ const response = () =>{
 document.querySelector(".start").addEventListener("click", start);
 document.querySelector(".size-dropbox").addEventListener("change", RenderScreen);
 document.querySelector(".algo-dropbox").addEventListener("change", RenderScreen);
+window.onload = RenderScreen;

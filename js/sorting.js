@@ -21,4 +21,4 @@ class sortingAlgorithms{
         }
         this.list[0].setAttribute("class", "cell done");
     }
-}
+};

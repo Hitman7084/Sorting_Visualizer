@@ -22,6 +22,7 @@ body{
     justify-content: center;
 }
 
+/*Visualization CSS */
 .visualize{
     margin: 5px auto;
     box-shadow: #000000 0px 1px 4px;
@@ -37,4 +38,42 @@ body{
     height: 100%;
     padding: 1rem;
     flex-direction: row;
+}
+
+.item{
+    display: flex;
+    align-items: flex-start;
+    margin: 1px;
+    background-color: #EDF2F4;
+    resize: horizontal;
+    position: relative;
+    transition: all 0.4s ease-in;
+}
+
+.item.done{
+    background-color: #2B2D42;
+    border-color: #2B2D42;
+    color: white;
+    transition: all 0.4s ease-out;
+}
+
+.item.visited{
+    border-color: #6184d8;
+    background-color: #6184d8;
+    color: white;
+    transition: 0.5s;
+}
+
+.item.current{
+    border-color: #50c5b7;
+    background-color: #50c5b7;
+    color: white;
+    transition: all 0.4s ease-out;
+}
+
+.item.min{
+    border-color: #ff1493;
+    background-color: #ff1493;
+    color: white;
+    transition: all 0.4s ease-out;
 }

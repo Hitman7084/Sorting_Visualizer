@@ -89,7 +89,7 @@ async function merge(start, mid, end) {
     const tempArray = [];
 
     while (left <= mid && right <= end) {
-        bars[left].style.backgroundColor = '#A4193D'; // Left half color
+        bars[left].style.backgroundColor = '#A4193D'; // Left half 
         bars[right].style.backgroundColor = '#FFDFB9'; // Right half color
 
         if (parseInt(bars[left].style.height) < parseInt(bars[right].style.height)) {

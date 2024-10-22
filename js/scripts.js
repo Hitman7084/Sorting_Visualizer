@@ -8,7 +8,6 @@ const sizeInput = document.getElementById('size');
 let array = [];
 let sorting = false;
 
-const colorSchemeSelect = document.getElementById('color-scheme');
 let comparisons = 0;
 let swaps = 0;
 let startTime;
@@ -28,15 +27,6 @@ function resetStats() {
     document.getElementById('comparisons').textContent = 0;
     document.getElementById('swaps').textContent = 0;
     document.getElementById('time').textContent = 0;
-}
-
-// Apply color scheme to bars
-function applyColorScheme(bars) {
-    const scheme = colorSchemeSelect.value;
-    bars.forEach(bar => {
-        bar.classList.remove('warm', 'cool', 'monochrome');
-        bar.classList.add(scheme);
-    });
 }
 
 function generateArray(){

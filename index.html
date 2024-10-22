@@ -17,6 +17,8 @@
                 <option value = "2"> Insertion Sort </option>
                 <option value = "3"> Quick Sort </option>
                 <option value = "4"> Merge Sort </option>
+                <option value = "5"> Selection Sort </option>
+                <option value = "6"> Heap Sort </option>
             </select>
             
             <label for = "speed"> Speed: </label>
@@ -28,15 +30,14 @@
             <button id = "generate"> Generate Array </button>
             <button id = "sort"> Sort </button>
 
-            <label for = "color-scheme"> Color Scheme: </label>
-            <select id = "color-scheme">
-                <option value = "default"> Default </option>
-                <option value = "warm"> Warm </option>
-                <option value = "cool"> Cool </option>
-                <option value = "monochrome"> Monochrome </option>
-            </select>
         </div>
         <div class = "array-container" id = "array-container"></div>
+    </div>
+
+    <div class = "statistics">
+        <p> Comparisons: <span id = "comparisons"> 0 </span></p>
+        <p> Swaps: <span id = "swaps"> 0 </span></p>
+        <p> Time: <span id = "time"> 0 </span> ms </p>
     </div>
     
     <script src = "js/scripts.js"></script>

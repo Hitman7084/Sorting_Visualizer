@@ -8,6 +8,37 @@ const sizeInput = document.getElementById('size');
 let array = [];
 let sorting = false;
 
+const colorSchemeSelect = document.getElementById('color-scheme');
+let comparisons = 0;
+let swaps = 0;
+let startTime;
+
+// Update statistics
+function updateStats(){
+    document.getElementById('comparisons').textContent = comparisons;
+    document.getElementById('swaps').textContent = swaps;
+    const timeElapsed = new Date().getTime() - startTime;
+    document.getElementById('time').textContent = timeElapsed;
+}
+
+// Reset statistics
+function resetStats() {
+    comparisons = 0;
+    swaps = 0;
+    document.getElementById('comparisons').textContent = 0;
+    document.getElementById('swaps').textContent = 0;
+    document.getElementById('time').textContent = 0;
+}
+
+// Apply color scheme to bars
+function applyColorScheme(bars) {
+    const scheme = colorSchemeSelect.value;
+    bars.forEach(bar => {
+        bar.classList.remove('warm', 'cool', 'monochrome');
+        bar.classList.add(scheme);
+    });
+}
+
 function generateArray(){
     const size = sizeInput.value;
     array = Array.from({ length: size }, () => Math.floor(Math.random() * 300) + 5);
@@ -143,11 +174,90 @@ async function partition(bars, start, end){
     return i + 1;
 }
 
-async function handleSort(){
+
+// Selection Sort
+async function selectionSort() {
+    const bars = document.querySelectorAll('.array-bar');
+    applyColorScheme(bars);
+    for (let i = 0; i < bars.length - 1; i++) {
+        let minIndex = i;
+        bars[i].style.backgroundColor = '#403D39'; // Current min element
+        
+        for (let j = i + 1; j < bars.length; j++) {
+            comparisons++;
+            updateStats();
+            bars[j].style.backgroundColor = '#A4193D'; // Current element being compared
+
+            if (parseInt(bars[j].style.height) < parseInt(bars[minIndex].style.height)) {
+                minIndex = j;
+            }
+            await sleep(speedInput.value);
+            bars[j].style.backgroundColor = '#333333'; // Reset color
+        }
+        
+        if (minIndex !== i) {
+            swap(bars[i], bars[minIndex]);
+            swaps++;
+            updateStats();
+        }
+        bars[i].classList.add('sorted');
+    }
+}
+
+// Heap Sort
+async function heapSort() {
+    const bars = document.querySelectorAll('.array-bar');
+    applyColorScheme(bars);
+    const n = bars.length;
+    
+    for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
+        await heapify(bars, n, i);
+    }
+    
+    for (let i = n - 1; i > 0; i--) {
+        swap(bars[0], bars[i]);
+        swaps++;
+        updateStats();
+        await heapify(bars, i, 0);
+        bars[i].classList.add('sorted');
+    }
+    bars[0].classList.add('sorted');
+}
+
+async function heapify(bars, n, i) {
+    let largest = i;
+    const left = 2 * i + 1;
+    const right = 2 * i + 2;
+    
+    comparisons++;
+    updateStats();
+    if (left < n && parseInt(bars[left].style.height) > parseInt(bars[largest].style.height)) {
+        largest = left;
+    }
+
+    comparisons++;
+    updateStats();
+    if (right < n && parseInt(bars[right].style.height) > parseInt(bars[largest].style.height)) {
+        largest = right;
+    }
+
+    if (largest !== i) {
+        swap(bars[i], bars[largest]);
+        swaps++;
+        updateStats();
+        await heapify(bars, n, largest);
+    }
+}
+
+// Handle sorting selection
+async function handleSort() {
     if (sorting) return;
     sorting = true;
+    resetStats();
+    startTime = new Date().getTime();
+    
     const algorithm = algorithmSelect.value;
-    switch (algorithm){
+    switch (algorithm) {
         case '0':
             alert("Sorting type not selected!!");
             break;
@@ -163,9 +273,16 @@ async function handleSort(){
         case '4':
             await mergeSort(0, array.length -1);
             break;
-        }
+        case '5':
+            await selectionSort();
+            break;
+        case '6':
+            await heapSort();
+            break;
+    }
     sorting = false;
 }
+
 
 generateBtn.addEventListener('click', generateArray);
 sortBtn.addEventListener('click', handleSort);

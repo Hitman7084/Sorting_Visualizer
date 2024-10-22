@@ -75,4 +75,33 @@ button:hover{
 .array-bar.sorted{
     background-color: #333333;
 }
-  
+
+.statistics{
+    margin-top: 20px;
+    font-size: 18px;
+    color: #333;
+}
+
+.array-bar.warm{
+    background-color: #ff6347;
+}
+
+.array-bar.cool{
+    background-color: #4682b4;
+}
+
+.array-bar.monochrome{
+    background-color: #666;
+}
+
+.array-bar.sorted.warm{
+    background-color: #ff4500;
+}
+
+.array-bar.sorted.cool{
+    background-color: #00bfff;
+}
+
+.array-bar.sorted.monochrome{
+    background-color: #333;
+}
